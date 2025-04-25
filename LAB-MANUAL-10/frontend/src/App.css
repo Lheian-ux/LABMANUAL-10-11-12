@@ -1,0 +1,59 @@
+/* Apply to entire page */
+body {
+  font-family: 'Trebuchet MS', sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Light Theme */
+.light-mode {
+  background-color: #e2e9e0;
+  color: black;
+}
+
+/* Dark Theme */
+.dark-mode {
+  background-color: #222;
+  color: white;
+}
+
+/* Center Content */
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Button Styling */
+button {
+  background-color: #dea764;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #385f89;
+}
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.delete-btn:hover {
+  background-color: rgb(136, 38, 38);
+}
