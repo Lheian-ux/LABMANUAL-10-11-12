@@ -1,12 +1,38 @@
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class InsertStudent {
+
+    // Method to ensure the database and table exist
+    private static void setupDatabase(Connection conn) throws SQLException {
+        try (Statement stmt = conn.createStatement()) {
+            // Create database if not exists
+            stmt.executeUpdate("CREATE DATABASE IF NOT EXISTS school");
+
+            // Use the school database
+            stmt.executeUpdate("USE school");
+
+            // Create students table if not exists
+            String createTableSQL = "CREATE TABLE IF NOT EXISTS students ("
+                    + "id INT AUTO_INCREMENT PRIMARY KEY, "
+                    + "name VARCHAR(100) NOT NULL, "
+                    + "course VARCHAR(100) NOT NULL, "
+                    + "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+            stmt.executeUpdate(createTableSQL);
+
+            System.out.println("Database and table setup completed successfully");
+        }
+    }
+
     public static void main(String[] args) {
-        try (Connection conn = DatabaseConnection.getConnection();
-             Scanner scanner = new Scanner(System.in)) {
+        try (Connection conn = DatabaseConnection.getConnection(); Scanner scanner = new Scanner(System.in)) {
+
+            System.out.println("Setting up database and tables if needed...");
+            setupDatabase(conn);
 
             String choice;
 
@@ -34,6 +60,7 @@ public class InsertStudent {
             System.out.println("Finished adding student records.");
 
         } catch (SQLException e) {
+            System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
         }
     }
