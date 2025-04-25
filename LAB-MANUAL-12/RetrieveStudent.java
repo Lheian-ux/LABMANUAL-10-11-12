@@ -39,23 +39,21 @@ public class RetrieveStudent {
                     continue;
                 }
 
-                String sql = "SELECT id, name, course, created_at FROM students WHERE id = ?";
+                String sql = "SELECT id, name, course FROM students WHERE id = ?";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setInt(1, studentId);
-
+                
                 ResultSet resultSet = stmt.executeQuery();
-
+                
                 if (resultSet.next()) {
                     int id = resultSet.getInt("id");
                     String name = resultSet.getString("name");
                     String course = resultSet.getString("course");
-                    String createdAt = resultSet.getString("created_at");
-
+                
                     System.out.println("\n----- Student Found -----");
                     System.out.println("ID: " + id);
                     System.out.println("Name: " + name);
                     System.out.println("Course: " + course);
-                    System.out.println("Created At: " + createdAt);
                     System.out.println("------------------------\n");
                 } else {
                     System.out.println("No student found with ID " + studentId);

@@ -40,41 +40,39 @@ public class DeleteStudent {
                 }
 
                 // Check if the student exists
-                String checkSql = "SELECT id, name, course, created_at FROM students WHERE id = ?";
-                PreparedStatement checkStmt = conn.prepareStatement(checkSql);
-                checkStmt.setInt(1, studentId);
-                ResultSet resultSet = checkStmt.executeQuery();
+                String checkSql = "SELECT id, name, course FROM students WHERE id = ?";
+PreparedStatement checkStmt = conn.prepareStatement(checkSql);
+checkStmt.setInt(1, studentId);
+ResultSet resultSet = checkStmt.executeQuery();
 
-                if (resultSet.next()) {
-                    System.out.println("\n----- Student Details -----");
-                    System.out.println("ID: " + resultSet.getInt("id"));
-                    System.out.println("Name: " + resultSet.getString("name"));
-                    System.out.println("Course: " + resultSet.getString("course"));
-                    System.out.println("Created At: " + resultSet.getString("created_at"));
-                    System.out.println("--------------------------\n");
+if (resultSet.next()) {
+    System.out.println("\n----- Student Details -----");
+    System.out.println("ID: " + resultSet.getInt("id"));
+    System.out.println("Name: " + resultSet.getString("name"));
+    System.out.println("Course: " + resultSet.getString("course"));
+    System.out.println("--------------------------\n");
 
-                    System.out.print("Are you sure you want to delete this student? (yes/no): ");
-                    String confirm = scanner.nextLine().trim().toLowerCase();
+    System.out.print("Are you sure you want to delete this student? (yes/no): ");
+    String confirm = scanner.nextLine().trim().toLowerCase();
 
-                    if (confirm.equals("yes")) {
-                        String deleteSql = "DELETE FROM students WHERE id = ?";
-                        PreparedStatement deleteStmt = conn.prepareStatement(deleteSql);
-                        deleteStmt.setInt(1, studentId);
+    if (confirm.equals("yes")) {
+        String deleteSql = "DELETE FROM students WHERE id = ?";
+        PreparedStatement deleteStmt = conn.prepareStatement(deleteSql);
+        deleteStmt.setInt(1, studentId);
 
-                        int rowsDeleted = deleteStmt.executeUpdate();
+        int rowsDeleted = deleteStmt.executeUpdate();
 
-                        if (rowsDeleted > 0) {
-                            System.out.println("Student deleted successfully.");
-                        } else {
-                            System.out.println("Deletion failed.");
-                        }
-                    } else {
-                        System.out.println("Deletion cancelled.");
-                    }
-
-                } else {
-                    System.out.println("No student found with ID " + studentId);
-                }
+        if (rowsDeleted > 0) {
+            System.out.println("Student deleted successfully.");
+        } else {
+            System.out.println("Deletion failed.");
+        }
+    } else {
+        System.out.println("Deletion cancelled.");
+    }
+} else {
+    System.out.println("No student found with ID " + studentId);
+}
 
                 System.out.print("Do you want to delete another record? (yes/no): ");
                 choice = scanner.nextLine().trim().toLowerCase();
