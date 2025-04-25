@@ -1,0 +1,299 @@
+/* Base Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+  line-height: 1.6;
+}
+
+/* Theme Modes */
+.light-mode {
+  --bg-color: #f8f9fa;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --border-color: #dee2e6;
+  --primary-btn: #007bff;
+  --danger-btn: #dc3545;
+  --warning-btn: #ffc107;
+  --secondary-btn: #6c757d;
+  --hover-lighten: 10%;
+}
+
+.dark-mode {
+  --bg-color: #121212;
+  --text-color: #000000;
+  --card-bg: #fdf8f8;
+  --border-color: #fdfdfd;
+  --primary-btn: #0d6efd;
+  --danger-btn: #bb2d3b;
+  --warning-btn: #ffca2c;
+  --secondary-btn: #5a6268;
+  --hover-lighten: 15%;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Cards */
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-body {
+  padding: 1.25rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.card-text {
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-btn);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--danger-btn);
+  color: white;
+}
+
+.btn-warning {
+  background-color: var(--warning-btn);
+  color: #212529;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-btn);
+  color: white;
+}
+
+.btn:hover {
+  filter: brightness(calc(100% + var(--hover-lighten)));
+}
+
+/* Form Styles */
+.form-control, .form-select {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 0.75rem;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-color: var(--primary-btn);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  opacity: 0.7;
+}
+
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1.5rem; }
+.mt-5 { margin-top: 3rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+.me-2 { margin-right: 0.5rem; }
+
+/* Responsive Grid */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.75rem;
+}
+
+.col-md-4 {
+  flex: 0 0 calc(33.333% - 1.5rem);
+  max-width: calc(33.333% - 1.5rem);
+  margin: 0.75rem;
+}
+
+@media (max-width: 992px) {
+  .col-md-4 {
+    flex: 0 0 calc(50% - 1.5rem);
+    max-width: calc(50% - 1.5rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Image Preview */
+.img-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  margin-top: 0.5rem;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 3rem 1rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Dark Mode Toggle Enhancements */
+.theme-toggle {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle span {
+  transition: transform 0.3s ease;
+}
+
+/* Form Container */
+.form-container {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+/* ==================== */
+/* STUDENT CARD STYLES  */
+/* ==================== */
+.student-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100px;
+}
+
+.student-content-wrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.student-image-container {
+  width: 80px;
+  height: 80px;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.student-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.student-text-content {
+  flex-grow: 1;
+}
+
+.student-name {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.student-course {
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.delete-btn {
+  margin-left: 1rem;
+  min-width: 80px;
+}
+
+@media (max-width: 576px) {
+  .student-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .student-content-wrapper {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .student-image-container {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    width: 100%;
+    height: 120px;
+  }
+  
+  .delete-btn {
+    margin-left: 0;
+    align-self: flex-end;
+  }
+}
